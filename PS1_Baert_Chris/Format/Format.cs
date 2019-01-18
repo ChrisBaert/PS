@@ -12,8 +12,9 @@ namespace PS1
         static void Main(string[] args)
         {
             int n;
+            Queue<string> myQ = new Queue<string>();
 
-            // If there not just a single command line input parameter, set n to 1
+            // If there is not just a single command line input parameter, set n to 1
             if (args.Length != 1)
             {
                 n = 1;
@@ -22,13 +23,13 @@ namespace PS1
             {
                 // If the input cannot be parsed to an int, then set n to 1
                 // If it can be parsed to an int, set n to that value
-                if (!int.TryParse(args[0],out n))
+                if (!int.TryParse(args[0], out n))
                 {
                     n = 1;
                 }
 
                 // If the int used to set n is not positive, set n to 1
-                if(n <= 0)
+                if (n <= 0)
                 {
                     n = 1;
                 }
@@ -41,18 +42,32 @@ namespace PS1
             // Read lines from standard input until there are no more
             while ((line = Console.ReadLine()) != null)
             {
-
-                Queue myQ = new Queue();
-
                 // Split the line into individual tokens and store in the words array
                 string[] words = line.Split(deliminators);
 
                 // For each token in words, cast to lower case and then write to console
                 foreach (var word in words)
                 {
-                    Console.WriteLine(word.ToLower());
+                    myQ.Enqueue(word);
                 }
-                // Testing to make sure I can commit
+                int wordCount = myQ.Count;
+                for (int i = 1; i <= wordCount / n; i++)
+                {
+                    for (int j = 1; j < n; j++)
+                    {
+                        Console.Write(myQ.Dequeue() + " ");
+                    }
+                    Console.WriteLine(myQ.Dequeue());
+                }
+            }
+            while (myQ.Count > 1)
+            {
+                Console.Write(myQ.Dequeue() + " ");
+            }
+
+            if (myQ.Count == 1)
+            {
+                Console.WriteLine(myQ.Dequeue());
             }
         }
     }
