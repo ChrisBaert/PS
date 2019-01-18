@@ -1,13 +1,25 @@
-﻿using System;
+﻿// Chris Baert
+// CS 3500
+// PS_1
+// Project Format
+// 01-17-2019
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PS1
-{
-    class Program
+{/// <summary>
+/// Format takes in a positive integar, n, as a command line parameter.  It then reads lines
+/// from standard input and breaks the input into tokens and then writes the tokens in order, 
+/// n per line to the output stream, until the input stream has ended.
+/// 
+/// </summary>
+    class Format
     {
         static void Main(string[] args)
         {
@@ -39,27 +51,33 @@ namespace PS1
             char[] deliminators = { ' ', '\t', '\r', '\n' };
             string line;
 
-            // Read lines from standard input until there are no more
+            // Read lines from standard input until the end of the input
             while ((line = Console.ReadLine()) != null)
             {
                 // Split the line into individual tokens and store in the words array
                 string[] words = line.Split(deliminators);
 
-                // For each token in words, cast to lower case and then write to console
+                // For each token in the string, add them to the queue
                 foreach (var word in words)
                 {
                     myQ.Enqueue(word);
                 }
                 int wordCount = myQ.Count;
+
+                // Loop once for each full line of words available to be printed
                 for (int i = 1; i <= wordCount / n; i++)
                 {
+                    // Print to the console the words with a space until the end of the line
                     for (int j = 1; j < n; j++)
                     {
                         Console.Write(myQ.Dequeue() + " ");
                     }
+                    // Then print the last word on the line with a carraige return
                     Console.WriteLine(myQ.Dequeue());
                 }
             }
+
+            // Print any remaining words left in the queue
             while (myQ.Count > 1)
             {
                 Console.Write(myQ.Dequeue() + " ");

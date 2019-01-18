@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Chris Baert
+// CS 3500
+// PS_1
+// Project Palindrome
+// 01-17-2019
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PS1
 {
-    class Program
+    class Palindrome
     {/// <summary>
     /// Reads lines from standard input and then checks to see if the input
     /// is a palindrome, meaning that it is the same regardless if it is read

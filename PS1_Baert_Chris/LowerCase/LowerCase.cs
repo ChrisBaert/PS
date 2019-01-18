@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Chris Baert
+// CS 3500
+// PS_1
+// Project LowerCase
+// 01-17-2019
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PS1
 {
-    class Program
+    class LowerCase
     {/// <summary>
      /// Read lines of input from standard input stream, break each line 
      /// into tokens and then covert each token into lower case and then 
